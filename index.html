@@ -5,32 +5,32 @@
 </head>
 <body>
   <a-scene>
-    <!-- 添加 3D 模特兒 -->
+    <!-- 3D 模特兒 -->
     <a-entity 
       id="model"
       position="0 1 -2"
       gltf-model="salina.glb">
     </a-entity>
-    
-    <!-- JavaScript 讓手擺動 -->
+
+    <!-- JavaScript 讓角色左右擺動 -->
     <script>
-      AFRAME.registerComponent('wave-hand', {
+      AFRAME.registerComponent('wave-motion', {
         init: function () {
           let el = this.el;
           let waving = false;
-          
-          // 每 2 秒擺動一次
+
           setInterval(() => {
             waving = !waving;
-            el.setAttribute('animation', `property: rotation; to: 0 ${waving ? 15 : -15} 0; dur: 500`);
+            el.setAttribute('animation', `property: rotation; to: 0 ${waving ? 10 : -10} 0; dur: 500; easing: easeInOutQuad`);
           }, 1000);
         }
       });
 
-      // 套用到 3D 模型
-      document.querySelector("#model").setAttribute("wave-hand", "");
+      // 套用到 3D 模特兒
+      document.querySelector("#model").setAttribute("wave-motion", "");
     </script>
   </a-scene>
 </body>
 </html>
+
 
