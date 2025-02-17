@@ -5,32 +5,15 @@
 </head>
 <body>
   <a-scene>
-    <!-- 3D 模特兒 -->
-    <a-entity 
-      id="model"
+    <!-- 添加 3D 模特兒 -->
+    <a-entity
       position="0 1 -2"
-      gltf-model="salina.glb">
+      gltf-model="salina.glb"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 2000">
     </a-entity>
-
-    <!-- JavaScript 讓角色左右擺動 -->
-    <script>
-      AFRAME.registerComponent('wave-motion', {
-        init: function () {
-          let el = this.el;
-          let waving = false;
-
-          setInterval(() => {
-            waving = !waving;
-            el.setAttribute('animation', `property: rotation; to: 0 ${waving ? 10 : -10} 0; dur: 500; easing: easeInOutQuad`);
-          }, 1000);
-        }
-      });
-
-      // 套用到 3D 模特兒
-      document.querySelector("#model").setAttribute("wave-motion", "");
-    </script>
   </a-scene>
 </body>
 </html>
+
 
 
